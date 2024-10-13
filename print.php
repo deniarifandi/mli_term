@@ -28,7 +28,8 @@
     }
       // echo "total subject = ".count($nilai_array);
     ?>
-
+<br>
+<br>
 
 <style type="text/css">
   table, th, td {
@@ -61,6 +62,8 @@
      
    </div>
 
+   <br>
+<br>
    <table class="borderless" style="width:100%; border: 0px !important">
 
     <tr class="borderless">
@@ -79,6 +82,8 @@
     </tr>
   </table>
   <br>
+<br>
+<br>
 
 
   <table style="width:100%">
@@ -116,14 +121,14 @@
 
 
     <tr>
-     <td width="10%"><?php echo $subject+1; ?></td>
-     <td width="30%"><?php echo $_POST['subject'.$subject+1] ?></td>
-     <td width="10%"><?php echo $exploded_nilai[0];?></td>
-     <td width="10%"><?php echo $exploded_nilai[1];?></td>
-     <td width="10%"><?php echo $exploded_nilai[2];?></td>
-     <td width="10%"><?php echo $exploded_nilai[3];?></td>
-     <td width="10%"><?php echo $exploded_nilai[4];?></td>
-     <td width="10%"><?php echo $exploded_nilai[5];?></td>
+     <td width="5%" style="text-align:center"><?php echo $subject+1; ?></td>
+     <td width="35%"><?php echo $_POST['subject'.$subject+1] ?></td>
+     <td width="10%" style="text-align: center; <?php if ($exploded_nilai[0] < 75) { ?> color:red <?php } ?>"><?php echo $exploded_nilai[0];?></td>
+     <td width="10%" style="text-align: center; <?php if ($exploded_nilai[1] < 75) { ?> color:red <?php } ?>"><?php echo $exploded_nilai[1];?></td>
+     <td width="10%" style="text-align: center; <?php if ($exploded_nilai[2] < 75) { ?> color:red <?php } ?>"><?php echo $exploded_nilai[2];?></td>
+     <td width="10%" style="text-align: center; <?php if ($exploded_nilai[3] < 75) { ?> color:red <?php } ?>"><?php echo $exploded_nilai[3];?></td>
+     <td width="10%" style="text-align: center; <?php if ($exploded_nilai[4] < 75) { ?> color:red <?php } ?>"><?php echo $exploded_nilai[4];?></td>
+     <td width="10%" style="text-align: center; <?php if ($exploded_nilai[5] < 75) { ?> color:red <?php } ?>"><?php echo $exploded_nilai[5];?></td>
      
    </tr>
 
@@ -141,21 +146,21 @@
        
        <td class="borderless"></td>
        
-       <td colspan="2" rowspan="">Teacher</td>
-       <td colspan="2" rowspan="">Parent</td>
+       <td colspan="2" rowspan=""  style="text-align: center;">Teacher</td>
+       <td colspan="2" rowspan=""  style="text-align: center;">Parent</td>
      </tr>
      <tr>
        <td width="40%" colspan="2">Sickness Absence</td>
-       <td width="10%" class=""><?php echo (float)$student_absence[0]/$_POST['pertemuan']*100; ?> %</td>
+       <td width="10%"  style="text-align: center;" class=""><?php echo (float)$student_absence[0]/$_POST['pertemuan']*100; ?> %</td>
        <td width="10%" class="borderless"></td>
-       <td width="10%" colspan="2" rowspan="3"></td>
+       <td width="10%" colspan="2" rowspan="3" style="text-align:center; vertical-align: bottom; font-size: 10px;"><?php echo $_POST['nama_guru'] ?></td>
        <td width="10%" colspan="2" class="" rowspan="3"></td>
        
      </tr>
       <tr>
        <td width="40%" colspan="2">Authorized Absence</td>
        
-       <td width="10%"><?php echo (float)$student_absence[1]/$_POST['pertemuan']*100; ?> %</td>
+       <td width="10%"  style="text-align: center;"><?php echo (float)$student_absence[1]/$_POST['pertemuan']*100; ?> %</td>
        <td width="10%" class="borderless"></td>
        
        
@@ -165,7 +170,7 @@
        
        
        
-       <td width="10%"><?php echo (float)$student_absence[2]/$_POST['pertemuan']*100; ?> %</td>
+       <td width="10%"  style="text-align: center;"><?php echo (float)$student_absence[2]/$_POST['pertemuan']*100; ?> %</td>
        <td width="10%" class="borderless"></td>
      </tr>
      <tr>
@@ -181,10 +186,12 @@
      
 
  </table>
+ <br>
+<br>
 
  <table style="width:100%; margin-top: 10px;" class="borderless">
    <tr>
-     <td style="text-align:center" class="borderless">Malang, <?php echo date("d-M-Y"); ?></td>
+     <td style="text-align:center" class="borderless">Malang, 24 October 2024</td>
    </tr>
    <tr>
      <td style="text-align:center" class="borderless">Principal<br><br><br><br></td>

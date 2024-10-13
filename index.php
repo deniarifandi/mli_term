@@ -16,6 +16,10 @@
           <h2>Class</h2>
           <input type="text" style="width:100%" rows="10" name="kelas" class="form-control"></input>
         </div>
+        <div class="col-md-12">
+          <h2>Homeroom Teacher Name</h2>
+          <input type="text" style="width:100%" rows="10" name="nama_guru" class="form-control"></input>
+        </div>
         <div class="col-md-12" style="margin-top:25px">
           <h2>Student (1 line per student)</h2>
           <textarea style="width:100%" rows="10" name="student" class="form-control"></textarea>
@@ -73,6 +77,10 @@
        <br>
        <br><br><br><br><br>
   <input class="btn btn-success" type="submit" id="submit_button" style="font-size: 30px; float: right;">
+  <br>
+  <br>
+  <br>
+  <br>
   <br><br>
 </div>
 
