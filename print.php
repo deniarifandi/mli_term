@@ -151,7 +151,7 @@
      </tr>
      <tr>
        <td width="40%" colspan="2">Sickness Absence</td>
-       <td width="10%"  style="text-align: center;" class=""><?php echo (float)$student_absence[0]/$_POST['pertemuan']*100; ?> %</td>
+       <td width="10%"  style="text-align: center;" class=""><?php echo round((float)$student_absence[0]/$_POST['pertemuan']*100); ?> %</td>
        <td width="10%" class="borderless"></td>
        <td width="10%" colspan="2" rowspan="3" style="text-align:center; vertical-align: bottom; font-size: 10px;"><?php echo $_POST['nama_guru'] ?></td>
        <td width="10%" colspan="2" class="" rowspan="3"></td>
@@ -160,7 +160,7 @@
       <tr>
        <td width="40%" colspan="2">Authorized Absence</td>
        
-       <td width="10%"  style="text-align: center;"><?php echo (float)$student_absence[1]/$_POST['pertemuan']*100; ?> %</td>
+       <td width="10%"  style="text-align: center;"><?php echo round((float)$student_absence[1]/$_POST['pertemuan']*100) ?> %</td>
        <td width="10%" class="borderless"></td>
        
        
@@ -170,7 +170,7 @@
        
        
        
-       <td width="10%"  style="text-align: center;"><?php echo (float)$student_absence[2]/$_POST['pertemuan']*100; ?> %</td>
+       <td width="10%"  style="text-align: center;"><?php echo round((float)$student_absence[2]/$_POST['pertemuan']*100); ?> %</td>
        <td width="10%" class="borderless"></td>
      </tr>
      <tr>
