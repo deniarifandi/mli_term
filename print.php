@@ -54,7 +54,7 @@
 
   <?php for ($x=0; $x < count($student_array); $x++) { 
     $student_absence = explode("\t",$absent_array[$x]);
-    
+    $counter = 0;
     ?>
     <!-- --------------- start lampiran -->
     <div class="row">
@@ -116,12 +116,21 @@
 
   <?php for ($subject=0; $subject < count($nilai_array); $subject++) { 
     $exploded_nilai = explode("\t",$nilai_array[$subject+1][$x]);
+
+    $checkNilai = 0;
+
+     for ($d=0; $d < count($exploded_nilai); $d++) { 
+          $checkNilai += (float)$exploded_nilai[$d];
+        }
+
     ?>
 
 
 
-    <tr>
-     <td width="5%" style="text-align:center"><?php echo $subject+1; ?></td>
+    <tr <?php if($checkNilai == 0){ 
+        ?> style="display: none;" 
+        <?php } else{ $counter++;}?>>
+     <td width="5%" style="text-align:center"><?php echo $counter; ?></td>
      <td width="35%"><?php echo $_POST['subject'.$subject+1] ?></td>
      <td width="10%" style="text-align: center; <?php if ($exploded_nilai[0] >= 0 && $exploded_nilai[0] < 75) { ?> color:red <?php } ?>"><?php echo $exploded_nilai[0];?></td>
      <td width="10%" style="text-align: center; <?php if ($exploded_nilai[1] >= 0 && $exploded_nilai[1] < 75) { ?> color:red <?php } ?>"><?php echo $exploded_nilai[1];?></td>
