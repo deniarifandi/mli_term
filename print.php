@@ -67,7 +67,7 @@
    <table class="borderless" style="width:100%; border: 0px !important">
 
     <tr class="borderless">
-      <td class="borderless" style="width:20%">Student Name</td>
+      <td class="borderless" style="width:20%">Student's Name</td>
       <td class="borderless" style="width:50%">: <?php echo $student_array[$x] ?></td>
       <td class="borderless" style="width:30%">Semester 1 AY 2024/2025</td>
 
@@ -123,12 +123,12 @@
     <tr>
      <td width="5%" style="text-align:center"><?php echo $subject+1; ?></td>
      <td width="35%"><?php echo $_POST['subject'.$subject+1] ?></td>
-     <td width="10%" style="text-align: center; <?php if ($exploded_nilai[0] < 75) { ?> color:red <?php } ?>"><?php echo $exploded_nilai[0];?></td>
-     <td width="10%" style="text-align: center; <?php if ($exploded_nilai[1] < 75) { ?> color:red <?php } ?>"><?php echo $exploded_nilai[1];?></td>
-     <td width="10%" style="text-align: center; <?php if ($exploded_nilai[2] < 75) { ?> color:red <?php } ?>"><?php echo $exploded_nilai[2];?></td>
-     <td width="10%" style="text-align: center; <?php if ($exploded_nilai[3] < 75) { ?> color:red <?php } ?>"><?php echo $exploded_nilai[3];?></td>
-     <td width="10%" style="text-align: center; <?php if ($exploded_nilai[4] < 75) { ?> color:red <?php } ?>"><?php echo $exploded_nilai[4];?></td>
-     <td width="10%" style="text-align: center; <?php if ($exploded_nilai[5] < 75) { ?> color:red <?php } ?>"><?php echo $exploded_nilai[5];?></td>
+     <td width="10%" style="text-align: center; <?php if ($exploded_nilai[0] >= 0 && $exploded_nilai[0] < 75) { ?> color:red <?php } ?>"><?php echo $exploded_nilai[0];?></td>
+     <td width="10%" style="text-align: center; <?php if ($exploded_nilai[1] >= 0 && $exploded_nilai[1] < 75) { ?> color:red <?php } ?>"><?php echo $exploded_nilai[1];?></td>
+     <td width="10%" style="text-align: center; <?php if ($exploded_nilai[2] >= 0 && $exploded_nilai[2] < 75) { ?> color:red <?php } ?>"><?php echo $exploded_nilai[2];?></td>
+     <td width="10%" style="text-align: center; <?php if ($exploded_nilai[3] >= 0 && $exploded_nilai[3] < 75) { ?> color:red <?php } ?>"><?php echo $exploded_nilai[3];?></td>
+     <td width="10%" style="text-align: center; <?php if ($exploded_nilai[4] >= 0 && $exploded_nilai[4] < 75) { ?> color:red <?php } ?>"><?php echo $exploded_nilai[4];?></td>
+     <td width="10%" style="text-align: center; <?php if ($exploded_nilai[5] >= 0 && $exploded_nilai[5] < 75) { ?> color:red <?php } ?>"><?php echo $exploded_nilai[5];?></td>
      
    </tr>
 
