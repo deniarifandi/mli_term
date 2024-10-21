@@ -28,8 +28,6 @@
     }
       // echo "total subject = ".count($nilai_array);
     ?>
-<br>
-<br>
 
 <style type="text/css">
   table, th, td {
