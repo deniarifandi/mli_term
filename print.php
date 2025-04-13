@@ -87,7 +87,7 @@
   <table style="width:100%">
 
    <tr>
-     <td colspan="8" style="text-align: center;"><h2 style="margin:0px">TERM 1 - PROGRESS REPORT</h2></td>
+     <td colspan="8" style="text-align: center;"><h2 style="margin:0px">TERM 3 - PROGRESS REPORT</h2></td>
    </tr>
    <tr>
      <td colspan="2" rowspan="3" style="text-align: center;"><h2>Subject</h2></td>
