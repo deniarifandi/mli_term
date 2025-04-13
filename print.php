@@ -67,14 +67,14 @@
     <tr class="borderless">
       <td class="borderless" style="width:20%">Student's Name</td>
       <td class="borderless" style="width:50%">: <?php echo $student_array[$x] ?></td>
-      <td class="borderless" style="width:30%">Semester 1 AY 2024/2025</td>
+      <td class="borderless" style="width:30%">Semester 2 AY 2024/2025</td>
 
 
     </tr>
     <tr class="borderless">
       <td class="borderless">Class</td>
       <td class="borderless">: <?php echo $_POST['kelas']; ?></td>
-      <td class="borderless">Term : 1</td>
+      <td class="borderless">Term : 3</td>
 
       
     </tr>
@@ -92,7 +92,7 @@
    <tr>
      <td colspan="2" rowspan="3" style="text-align: center;"><h2>Subject</h2></td>
     
-     <td colspan="6" style="text-align:center">TERM 1 (JULY  -  SEPTEMBER)</td>
+     <td colspan="6" style="text-align:center">TERM 3 (JANUARY  -  MARCH)</td>
    
  
    </tr>
@@ -198,7 +198,7 @@
 
  <table style="width:100%; margin-top: 10px;" class="borderless">
    <tr>
-     <td style="text-align:center" class="borderless">Malang, 24 October 2024</td>
+     <td style="text-align:center" class="borderless">Malang, 17 April 2025</td>
    </tr>
    <tr>
      <td style="text-align:center" class="borderless">Principal<br><br><br><br></td>
