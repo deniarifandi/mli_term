@@ -1,3 +1,75 @@
+<?php 
+
+include('connect.php');;
+
+// Get class and student details
+$kelas = $_GET['kelas'];
+
+$sql = "SELECT * FROM students  JOIN classes ON students.class_id = classes.id WHERE class_id = $kelas";
+$students_result = $conn->query($sql);
+
+//echo json_encode($students_result->fetch_assoc());
+
+$student_array = [];
+if ($students_result->num_rows > 0) {
+    // Fetch the text block
+    $row = $students_result->fetch_assoc();
+    $fullText = $row['student_name'];
+    $absen = $row['absen'];
+    $class = $row['class_name'];
+    $pertemuan = $row['pertemuan'];
+    $homeroom = $row['homeroom'];
+
+    // Explode the text block by newlines into an array
+    $lines = explode("\n", $fullText);
+    $absenLines = explode("\n", $absen);
+
+    // Output each line
+    $indexAbsen = 0;
+
+    foreach ($lines as $line) {
+
+        // echo $line ." , ". $absenLines[$indexAbsen++]. "<br>";
+    }
+} else {
+    echo "No data 1 found.";
+}
+
+$sql2 = "SELECT * FROM subjects WHERE class_id = $kelas";
+$subjects_result = $conn->query($sql2);
+
+$objective_array = [];
+$nilai_explode_stu = [];
+
+if ($subjects_result->num_rows > 0) {
+
+    //print_r($subjects_result->fetch_assoc());
+
+    while( $row = $subjects_result->fetch_assoc()){
+        $list_subjects_array[] = $row;
+    }
+
+
+    // print_r($nilai_explode_stu);
+
+    // for ($i=0; $i < count($list_subjects_array); $i++) { 
+      // print_r($list_subjects_array[0]);
+
+    //   echo "<br>";
+    //   echo "<br>";
+    // }
+
+    // print_r($nilai_explode_stu[0]);
+    
+    
+
+} else {
+    echo "No data 2 found.";
+}
+
+$conn->close();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,19 +86,30 @@
 </style>
 <?php
 
-    $student_array = explode("\n",$_POST['student']);
-    $absent_array = explode("\n",$_POST['absen']);
+    // $student_array = explode("\n",$_POST['student']);
+    // $absent_array = explode("\n",$_POST['absen']);
+    
+    // echo $
 
     $nilai_array = [];
 
-    for ($i=1; $i < 100; $i++) { 
-      if (isset($_POST['nilai'.$i])) {
-          if ($_POST['nilai'.$i] != null) {
-            $nilai_array[$i] = explode("\n",$_POST['nilai'.$i]);
-          }
-      }
+    
+
+    for ($i=0; $i < count($list_subjects_array); $i++) { 
+      // echo $list_subjects_array[$i]['subject_name']." - ".$list_subjects_array[$i]['nilai'];
+      // echo "<br>";
+      $nilai_array[$i] = explode("\n", $list_subjects_array[$i]['nilai']);
+
+
+      // if (isset($_POST['nilai'.$i])) {
+      //     if ($_POST['nilai'.$i] != null) {
+      //       $nilai_array[$i] = explode("\n",$_POST['nilai'.$i]);
+      //     }
+      // }
     }
-      // echo "total subject = ".count($nilai_array);
+    
+    // echo "total subject = ".count($nilai_array);
+    
     ?>
 
 <style type="text/css">
@@ -50,9 +133,12 @@
 </style>
 <body style="width:90%; padding-left:4%">
 
-  <?php for ($x=0; $x < count($student_array); $x++) { 
-    $student_absence = explode("\t",$absent_array[$x]);
-    $counter = 0;
+    <?php for ($x=0; $x < count($lines); $x++) { 
+     $student_absence = explode("\t",$absenLines[$x]);
+      // echo $student_absence[0]."<br>";
+      // echo $student_absence[1]."<br>"; 
+      // echo $student_absence[2]."<br>";
+      $counter = 0;
     ?>
     <!-- --------------- start lampiran -->
     <div class="row">
@@ -66,14 +152,14 @@
 
     <tr class="borderless">
       <td class="borderless" style="width:20%">Student's Name</td>
-      <td class="borderless" style="width:50%">: <?php echo $student_array[$x] ?></td>
+      <td class="borderless" style="width:50%">: <?php echo $lines[$x] ?></td>
       <td class="borderless" style="width:30%">Semester 2 AY 2024/2025</td>
 
 
     </tr>
     <tr class="borderless">
       <td class="borderless">Class</td>
-      <td class="borderless">: <?php echo $_POST['kelas']; ?></td>
+      <td class="borderless">: <?php echo $class ?></td>
       <td class="borderless">Term : 3</td>
 
       
@@ -113,7 +199,11 @@
    </tr>
 
   <?php for ($subject=0; $subject < count($nilai_array); $subject++) { 
-    $exploded_nilai = explode("\t",$nilai_array[$subject+1][$x]);
+    $exploded_nilai = $nilai_array;
+    
+    // print_r($exploded_nilai[$subject][$x]);
+    // echo $exploded_nilai[$subject][$x]."<br>";
+    $explodedSubject = explode("\t", $exploded_nilai[$subject][$x]);
 
     $checkNilai = 0;
 
@@ -129,13 +219,13 @@
         ?> style="display: none;" 
         <?php } else{ $counter++;}?>>
      <td width="5%" style="text-align:center"><?php echo $counter; ?></td>
-     <td width="35%"><?php echo $_POST['subject'.$subject+1] ?></td>
-     <td width="10%" style="text-align: center; <?php if ($exploded_nilai[0] >= 0 && $exploded_nilai[0] < 75) { ?> color:red <?php } ?>"><?php echo $exploded_nilai[0];?></td>
-     <td width="10%" style="text-align: center; <?php if ($exploded_nilai[1] >= 0 && $exploded_nilai[1] < 75) { ?> color:red <?php } ?>"><?php echo $exploded_nilai[1];?></td>
-     <td width="10%" style="text-align: center; <?php if ($exploded_nilai[2] >= 0 && $exploded_nilai[2] < 75) { ?> color:red <?php } ?>"><?php echo $exploded_nilai[2];?></td>
-     <td width="10%" style="text-align: center; <?php if ($exploded_nilai[3] >= 0 && $exploded_nilai[3] < 75) { ?> color:red <?php } ?>"><?php echo $exploded_nilai[3];?></td>
-     <td width="10%" style="text-align: center; <?php if ($exploded_nilai[4] >= 0 && $exploded_nilai[4] < 75) { ?> color:red <?php } ?>"><?php echo $exploded_nilai[4];?></td>
-     <td width="10%" style="text-align: center; <?php if ($exploded_nilai[5] >= 0 && $exploded_nilai[5] < 75) { ?> color:red <?php } ?>"><?php echo $exploded_nilai[5];?></td>
+     <td width="35%"><?php echo $list_subjects_array[$subject]['subject_name']; ?></td>
+     <td width="10%" style="text-align: center; <?php if ($explodedSubject[0] >= 0 && $explodedSubject[0] < 75) { ?> color:red <?php } ?>"><?php echo $explodedSubject[0];?></td>
+     <td width="10%" style="text-align: center; <?php if ($explodedSubject[1] >= 0 && $explodedSubject[1] < 75) { ?> color:red <?php } ?>"><?php echo $explodedSubject[1];?></td>
+     <td width="10%" style="text-align: center; <?php if ($explodedSubject[2] >= 0 && $explodedSubject[2] < 75) { ?> color:red <?php } ?>"><?php echo $explodedSubject[2];?></td>
+     <td width="10%" style="text-align: center; <?php if ($explodedSubject[3] >= 0 && $explodedSubject[3] < 75) { ?> color:red <?php } ?>"><?php echo $explodedSubject[3];?></td>
+     <td width="10%" style="text-align: center; <?php if ($explodedSubject[4] >= 0 && $explodedSubject[4] < 75) { ?> color:red <?php } ?>"><?php echo $explodedSubject[4];?></td>
+     <td width="10%" style="text-align: center; <?php if ($explodedSubject[5] >= 0 && $explodedSubject[5] < 75) { ?> color:red <?php } ?>"><?php echo $explodedSubject[5];?></td>
      
    </tr>
 
@@ -158,16 +248,16 @@
      </tr>
      <tr>
        <td width="40%" colspan="2">Sickness Absence</td>
-       <td width="10%"  style="text-align: center;" class=""><?php echo round((float)$student_absence[0]/$_POST['pertemuan']*100); ?> %</td>
+       <td width="10%"  style="text-align: center;" class=""><?php echo round((float)$student_absence[0]/$pertemuan*100); ?> %</td>
        <td width="10%" class="borderless"></td>
-       <td width="10%" colspan="2" rowspan="3" style="text-align:center; vertical-align: bottom; font-size: 10px;"><?php echo $_POST['nama_guru'] ?></td>
+       <td width="10%" colspan="2" rowspan="3" style="text-align:center; vertical-align: bottom; font-size: 10px;"><?php echo $homeroom; ?></td>
        <td width="10%" colspan="2" class="" rowspan="3"></td>
        
      </tr>
       <tr>
        <td width="40%" colspan="2">Authorized Absence</td>
        
-       <td width="10%"  style="text-align: center;"><?php echo round((float)$student_absence[1]/$_POST['pertemuan']*100) ?> %</td>
+       <td width="10%"  style="text-align: center;"><?php echo round((float)$student_absence[1]/$pertemuan*100) ?> %</td>
        <td width="10%" class="borderless"></td>
        
        
@@ -177,7 +267,7 @@
        
        
        
-       <td width="10%"  style="text-align: center;"><?php echo round((float)$student_absence[2]/$_POST['pertemuan']*100); ?> %</td>
+       <td width="10%"  style="text-align: center;"><?php echo round((float)$student_absence[2]/$pertemuan*100); ?> %</td>
        <td width="10%" class="borderless"></td>
      </tr>
      <tr>
