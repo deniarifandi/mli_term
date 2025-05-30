@@ -74,7 +74,7 @@
     <tr class="borderless">
       <td class="borderless">Class</td>
       <td class="borderless">: <?php echo $_POST['kelas']; ?></td>
-      <td class="borderless">Term : 3</td>
+      <td class="borderless">Term : 4</td>
 
       
     </tr>
@@ -87,12 +87,12 @@
   <table style="width:100%">
 
    <tr>
-     <td colspan="8" style="text-align: center;"><h2 style="margin:0px">TERM 3 - PROGRESS REPORT</h2></td>
+     <td colspan="8" style="text-align: center;"><h2 style="margin:0px">TERM 4 - PROGRESS REPORT</h2></td>
    </tr>
    <tr>
      <td colspan="2" rowspan="3" style="text-align: center;"><h2>Subject</h2></td>
     
-     <td colspan="6" style="text-align:center">TERM 3 (JANUARY  -  MARCH)</td>
+     <td colspan="6" style="text-align:center">TERM 4 (APRIL  -  JUNE)</td>
    
  
    </tr>
@@ -198,7 +198,7 @@
 
  <table style="width:100%; margin-top: 10px;" class="borderless">
    <tr>
-     <td style="text-align:center" class="borderless">Malang, 17 April 2025</td>
+     <td style="text-align:center" class="borderless">Malang, 2 June 2025</td>
    </tr>
    <tr>
      <td style="text-align:center" class="borderless">Principal<br><br><br><br></td>
